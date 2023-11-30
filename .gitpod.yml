@@ -1,0 +1,17 @@
+image:
+  file: ./gitpod/.gitpod.Dockerfile
+
+tasks:
+  - name: Supervisor (VNC and noVNC)
+    command: /usr/bin/supervisord --configuration /etc/supervisord.conf &
+
+ports:
+  - name: noVNC
+    description: Port where the noVNC view is available
+    port: 7900
+    onOpen: open-browser
+  - name: Build and test ports
+    description: Other ports opened while building or testing
+    port: 8000-65535
+    onOpen: ignore
+
